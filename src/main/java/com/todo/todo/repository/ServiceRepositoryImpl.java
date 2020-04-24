@@ -41,6 +41,7 @@ public class ServiceRepositoryImpl implements ServiceRepository {
         }
         catch (Exception e) {
             handleException(e);
+            // reset method
         }
     }
 
@@ -57,6 +58,7 @@ public class ServiceRepositoryImpl implements ServiceRepository {
         }
         catch (Exception e) {
             handleException(e);
+            // reset
         }
     }
 
@@ -76,6 +78,7 @@ public class ServiceRepositoryImpl implements ServiceRepository {
 
         catch (Exception e) {
             handleException(e);
+            // reset
         }
     }
 
@@ -94,6 +97,7 @@ public class ServiceRepositoryImpl implements ServiceRepository {
 
         } catch (Exception e) {
             handleException(e);
+            // reset
         }
     }
 
@@ -110,6 +114,7 @@ public class ServiceRepositoryImpl implements ServiceRepository {
                      "select * from Todos WHERE done = 0")) {
 
             while (resultSet.next()) {
+
                 System.out.println(resultSet.getInt(1) + "  "
                         + resultSet.getString(2) + "  "
                         + resultSet.getBoolean(3));
@@ -117,6 +122,7 @@ public class ServiceRepositoryImpl implements ServiceRepository {
                 
         } catch (Exception e) {
             handleException(e);
+            //reset 
         }
 
     }

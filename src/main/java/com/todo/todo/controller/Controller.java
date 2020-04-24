@@ -35,8 +35,10 @@ public class Controller {
                 break;
             case 5:
                 repo.displayUndoneTasks();
+                break;
             case 6:
                 repo.removeTask();
+                break;
             case 7:
                 exit = true;
                 break;
