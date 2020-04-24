@@ -20,6 +20,8 @@ public class ServiceRepositoryImpl implements ServiceRepository {
 
             preparedStatement.setString(1, askForTask());
             preparedStatement.executeUpdate();
+
+            System.out.println("Task has been added");
         }
         catch (Exception e) {
             handleException(e);
@@ -35,9 +37,13 @@ public class ServiceRepositoryImpl implements ServiceRepository {
              PreparedStatement preparedStatement = connection.prepareStatement(
                 "UPDATE Todos SET Todo = ? WHERE Id = ?");) {
 
+            displayAllTasks();
+
             preparedStatement.setString(1, askForTask());
             preparedStatement.setInt(2, askForKey());
             preparedStatement.executeUpdate();
+
+            System.out.println("Task has been changed");
         }
         catch (Exception e) {
             handleException(e);
@@ -53,8 +59,12 @@ public class ServiceRepositoryImpl implements ServiceRepository {
              PreparedStatement preparedStatement = connection.prepareStatement(
                      "DELETE FROM Todos WHERE Id = ?")) {
 
+            displayAllTasks();
+
             preparedStatement.setInt(1, askForKey());
             preparedStatement.executeUpdate();
+
+            System.out.println("Task has been removed");
         }
         catch (Exception e) {
             handleException(e);
@@ -72,8 +82,12 @@ public class ServiceRepositoryImpl implements ServiceRepository {
                              "SET done = 1 " +
                              "WHERE Id = ?")) {
 
+            displayAllTasks();
+
             preparedStatement.setInt(1, askForKey());
             preparedStatement.executeUpdate();
+
+            System.out.println("Task status has been set to done");
         }
 
         catch (Exception e) {
@@ -90,6 +104,8 @@ public class ServiceRepositoryImpl implements ServiceRepository {
              ResultSet resultSet = preparedStatement.executeQuery("select * from Todos;");) {
 
             while (resultSet.next()) {
+
+                System.out.println("Tasks:");
                 System.out.println(resultSet.getInt(1) + "  "
                         + resultSet.getString(2) + "  "
                         + resultSet.getBoolean(3));
